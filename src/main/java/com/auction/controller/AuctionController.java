@@ -137,7 +137,7 @@ public class AuctionController {
 
     /**
      * This will use to do action after submission of the trade form
-     * @Param It takes one parameter of type Model
+     * @Param It takes four parameters. 1 of type String, 2 of type double and 1 of type Model
      * @Return It returns the String
      */
     @RequestMapping(value= {"/add-trade"}, method=RequestMethod.POST)
