@@ -33,7 +33,7 @@
                             <div class="col-md-5 p-5">
                                 <h3 class="mb-4 font-weight-bold">Login</h3>
                                 <form method="POST" action="/login" modelAttribute="userCredentials">
-                                    <span class="text-danger"> ${msg}</span>
+
                                     <div class="form-group">
                                         <input type="email" name="user_email" placeholder="Enter your email" class="form-control" required/>
                                     </div>
@@ -45,6 +45,7 @@
                                             <input type="checkbox" class="custom-control-input" id="remember-password" />
                                             <label class="custom-control-label" for="remember-password">Remember Password</label>
                                         </div>
+                                        <span class="text-danger"> ${msg}</span>
                                         <a href="#" class="text-primary">Forgot Password</a>
                                     </div>
                                     <button class="btn btn-outline-success px-4 mt-3 mb-3">

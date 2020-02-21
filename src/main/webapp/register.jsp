@@ -36,7 +36,7 @@
                            <div class="col-md-5 p-5">
                             <h3 class="mb-4 font-weight-bold">Register</h3>
                             <form method="POST" action="/register" modelAttribute="userForm">
-                            <span class="text-danger"> ${msg}</span>
+
                                 <div class="form-group">
                                     <input type="text" name="public_name" placeholder="Enter your public name" class="form-control" required/>
                                 </div>
@@ -46,6 +46,7 @@
                                 <div class="form-group">
                                     <input type="password" name="user_password" placeholder="Enter your password" class="form-control" required/>
                                 </div>
+                                <span class="text-danger"> ${msg} </span>
                                 <button class="btn btn-outline-success px-4 mt-3 mb-3">
                                     Sign Up
                                 </button>

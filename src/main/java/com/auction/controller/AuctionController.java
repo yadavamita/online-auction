@@ -57,9 +57,13 @@ public class AuctionController {
                 session.setAttribute("user", email);
                 session.setAttribute("name", user.getName());
                 session.setAttribute("userId", user.getUserId());
+                return "dashboard";
+            }else {
+            model.addAttribute("msg", "invalid email or password");
+            return "index";
             }
-            return "dashboard";
         }else {
+            model.addAttribute("msg", "user doesn't exists");
             return "redirect:/register";
         }
     }
@@ -87,12 +91,9 @@ public class AuctionController {
 
         Register registerUser = new Register(name,email,password);
         User userExists = userService.findUserByEmail(email);
-        if(userExists.getName().equals(registerUser.getName())) {
-            model.addAttribute("msg", "order with this user already exists");
-            return "redirect:/register";
-        }
         if (userExists != null) {
-            return "redirect:/register";
+            model.addAttribute("msg", "user already exists");
+            return "register";
         }
         userService.saveUser(registerUser);
         return "redirect:/";

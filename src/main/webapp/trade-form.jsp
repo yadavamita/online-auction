@@ -53,7 +53,7 @@
 
                     <a href="dashboard.jsp" class="btn btn-secondary">Close</a>
 
-                    <a href="dashboard.jsp" type="submit" class="btn btn-primary" value="hello">Save</a>
+                    <button type="submit" class="btn btn-primary" value="hello">Save</button>
                 </form>
               </div>
             </div>
