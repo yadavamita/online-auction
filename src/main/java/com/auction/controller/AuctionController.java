@@ -35,6 +35,8 @@ public class AuctionController {
      */
     @RequestMapping(value= {"/"}, method=RequestMethod.GET)
     public String login(Model model) {
+        User user =new User();
+        model.addAttribute("userCredentials", user);
         return "index";
     }
 

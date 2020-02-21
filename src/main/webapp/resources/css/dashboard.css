@@ -31,3 +31,19 @@ table{
     height: 100%;
     z-index: 9;
 }
+
+.card a.img-wrap{
+        height: 200px;
+        width: 200px;
+        overflow: hidden;
+        margin: 0 auto;
+        border-radius: 100%;
+        border: 1px solid #ddd;
+        padding:20px;
+}
+.card a.img-wrap img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+}
