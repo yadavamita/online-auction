@@ -1,7 +1,6 @@
 package com.auction.service;
 
 import com.auction.dao.UserDAO;
-import com.auction.model.Register;
 import com.auction.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void saveUser(Register user) {
+    public void saveUser(User user) {
         userDAO.saveUser(user);
     }
 

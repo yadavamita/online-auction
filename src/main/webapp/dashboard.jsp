@@ -36,7 +36,8 @@
     </section>
     <section id="resgistration_lists" class="resgistration_lists py-5">
         <div class="container">
-        <h3 id="user">Hello <%=name%></h3>
+
+        <h3 style="color: blue;">Hello <%=name%></h3>
         <br/>
 
 

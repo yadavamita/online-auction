@@ -1,14 +1,11 @@
 package com.auction.dao;
-import com.auction.model.Register;
 import com.auction.model.User;
-import com.auction.utility.MD5;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import java.security.*;
 
 import java.util.List;
 
@@ -23,12 +20,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void saveUser(Register registerUser) {
-        User user=new User();
-        user.setEmailId(registerUser.getEmail());
-        user.setName(registerUser.getName());
-        user.setPassword(registerUser.getPassword());
-
+    public void saveUser(User user) {
         getSession().save(user);
     }
 

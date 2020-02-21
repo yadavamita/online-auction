@@ -1,12 +1,9 @@
 package com.auction.controller;
 
-import com.auction.model.Register;
 import com.auction.model.Trade;
 import com.auction.model.User;
-import com.auction.model.UserCredentials;
 import com.auction.service.TradeService;
 import com.auction.service.UserService;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +35,6 @@ public class AuctionController {
      */
     @RequestMapping(value= {"/"}, method=RequestMethod.GET)
     public String login(Model model) {
-        UserCredentials userCredential = new UserCredentials();
-        model.addAttribute("userCredential",userCredential );
         return "index";
     }
 
@@ -75,9 +70,6 @@ public class AuctionController {
      */
     @RequestMapping(value= {"/register"}, method=RequestMethod.GET)
     public String viewRegister(Model model) {
-        Register register = new Register();
-        model.addAttribute("userForm", register);
-
         return "register";
     }
 
@@ -89,13 +81,17 @@ public class AuctionController {
     @RequestMapping(value= {"/register"}, method=RequestMethod.POST)
     public String processRegister(@RequestParam("public_name") String name, @RequestParam("user_email") String email, @RequestParam("user_password") String password, Model model) {
 
-        Register registerUser = new Register(name,email,password);
+        User user = new User();
+        user.setName(name);
+        user.setEmailId(email);
+        user.setPassword(password);
+
         User userExists = userService.findUserByEmail(email);
         if (userExists != null) {
             model.addAttribute("msg", "user already exists");
             return "register";
         }
-        userService.saveUser(registerUser);
+        userService.saveUser(user);
         return "redirect:/";
 
     }
@@ -173,8 +169,6 @@ public class AuctionController {
     @RequestMapping(value = "/delete-{name}", method = RequestMethod.GET)
     public String deleteTrade(@PathVariable("name") String name) {
         tradeService.deleteTrade(name);
-
         return "redirect:/trade-list";
     }
-
 }
