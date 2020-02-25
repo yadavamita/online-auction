@@ -32,11 +32,20 @@ Prerequisites should installed on your system:
 
 ##### Note: Create a database in your mysql named `online_auction` before executing the application.
 
-### IntelliJ
+### IntelliJ (Community Version)
 
 1. Go to the Run -> Edit Configurations -> click on `+` icon and 
 2. select Maven -> Give any name you want to this configuration
 3. In parameters, write `tomcat7:run` in command line
 4. scroll down to before launch and set run maven goal and write `clean`
+5. apply -> ok
+6. run the application with this named configuration and can check with `Localhost:8080`
+
+### Netbeans 8.2
+
+1. Just open the project folder in the netbeans 
+2. right click on the project and select run Maven -> Goals
+3. write `clean compile` to clean the artifact every time and compile the code, apply and ok
+4. click on the Run menu -> run project -> select the server
 5. apply -> ok
 6. run the application with this named configuration and can check with `Localhost:8080`
