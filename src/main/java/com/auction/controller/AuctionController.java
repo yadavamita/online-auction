@@ -8,6 +8,7 @@ import com.auction.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class AuctionController {
 
     @Autowired
     private TradeService tradeService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * This renders the login page
@@ -50,7 +54,7 @@ public class AuctionController {
         User user = userService.findUserByEmail(email);
 
         if(user != null) {
-            if (user.getPassword().equals(password)) {
+            if (passwordEncoder.matches(password, user.getPassword())) {
                 session.setAttribute("user", email);
                 session.setAttribute("name", user.getName());
                 session.setAttribute("userId", user.getUserId());
@@ -86,7 +90,7 @@ public class AuctionController {
         User user = new User();
         user.setName(name);
         user.setEmailId(email);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
 
         User userExists = userService.findUserByEmail(email);
         if (userExists != null) {
